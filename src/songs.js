@@ -1,4 +1,4 @@
-﻿const publicAsset = (path) => `${import.meta.env.BASE_URL}${path}`;
+const publicAsset = (path) => `${import.meta.env.BASE_URL}${path}`;
 
 const songs = [
   {
@@ -47,9 +47,7 @@ const songs = [
     title: "Let Me Love You",
     artist: "DJ Snake ft. Justin Bieber",
     cover: publicAsset("covers/let-me-love-you.jpg"),
-    audio: publicAsset(
-      "songs/_DJ_Snake_ft_Justin_Bieber_Let_Me_Love_You_Lyric_Video_المدة_3_27.mp3",
-    ),
+    audio: publicAsset("songs/let-me-love-you-dj-snake.mp3"),
   },
 ];
 

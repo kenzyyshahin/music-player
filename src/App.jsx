@@ -1,4 +1,18 @@
 import { useState, useRef, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBackwardStep,
+  faForwardStep,
+  faHeart as faSolidHeart,
+  faMusic,
+  faPause,
+  faPlay,
+  faRepeat,
+  faShuffle,
+  faVolumeHigh,
+  faVolumeLow,
+} from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
 import songs from "./songs";
 import "./App.css";
 
@@ -120,6 +134,7 @@ function App() {
   function selectSong(index) {
     setCurrentSongIndex(index);
     setIsPlaying(true);
+    c;
     setCurrentTime(0);
   }
 
@@ -187,19 +202,19 @@ function App() {
               className={activePage === "player" ? "active" : ""}
               onClick={() => handlePageChange("player")}
             >
-              <span>♫</span> Music Player
+              <span><FontAwesomeIcon icon={faMusic} /></span> Music Player
             </p>
 
             <p
               className={activePage === "favorites" ? "active" : ""}
               onClick={() => handlePageChange("favorites")}
             >
-              <span>♥</span> Your Favorites
+              <span><FontAwesomeIcon icon={faSolidHeart} /></span> Your Favorites
             </p>
           </div>
 
           <div className="sidebar-bottom">
-            <p>Made with ♡</p>
+            <p>Made with <FontAwesomeIcon icon={faRegularHeart} /></p>
           </div>
         </aside>
 
@@ -242,7 +257,13 @@ function App() {
                 title="Favorite"
                 onClick={() => toggleFavorite(currentSong.id)}
               >
-                {favorites.includes(currentSong.id) ? "♥" : "♡"}
+                <FontAwesomeIcon
+                  icon={
+                    favorites.includes(currentSong.id)
+                      ? faSolidHeart
+                      : faRegularHeart
+                  }
+                />
               </button>
             </div>
 
@@ -288,11 +309,11 @@ function App() {
                 onClick={() => setIsSuffling(!isShuffling)}
                 title="Shuffle"
               >
-                ⤨
+                <FontAwesomeIcon icon={faShuffle} />
               </button>
 
               <button onClick={previousSong} title="Previous">
-                |◀
+                <FontAwesomeIcon icon={faBackwardStep} />
               </button>
 
               <button
@@ -300,12 +321,11 @@ function App() {
                 onClick={togglePlay}
                 title={isPlaying ? "Pause" : "Play"}
               >
-                {isPlaying ? "||" : "▶"}
+                <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
               </button>
 
               <button onClick={nextSong} title="Next">
-                {" "}
-                ▶|
+                <FontAwesomeIcon icon={faForwardStep} />
               </button>
 
               <button
@@ -313,14 +333,14 @@ function App() {
                 onClick={() => setIsRepeating(!isRepeating)}
                 title="Repeat"
               >
-                ↻
+                <FontAwesomeIcon icon={faRepeat} />
               </button>
             </div>
 
             {/* Volume */}
 
             <div className="volume-section">
-              <span>🔈</span>
+              <span><FontAwesomeIcon icon={faVolumeLow} /></span>
               <input
                 type="range"
                 min="0"
@@ -330,7 +350,7 @@ function App() {
                 onChange={handleVolumeChange}
                 className="volume-bar"
               />
-              <span>🔊</span>
+              <span><FontAwesomeIcon icon={faVolumeHigh} /></span>
             </div>
           </section>
         </main>
@@ -363,7 +383,7 @@ function App() {
                   </div>
 
                   <span className="song-icon">
-                    {isCurrentSong && isPlaying ? "♫" : "♪"}
+                    <FontAwesomeIcon icon={faMusic} />
                   </span>
                 </div>
               );

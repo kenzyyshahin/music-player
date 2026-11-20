@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+﻿import { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBackwardStep,
@@ -134,7 +134,6 @@ function App() {
   function selectSong(index) {
     setCurrentSongIndex(index);
     setIsPlaying(true);
-    c;
     setCurrentTime(0);
   }
 
@@ -400,3 +399,4 @@ function App() {
 }
 
 export default App;
+
